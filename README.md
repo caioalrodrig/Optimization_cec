@@ -10,16 +10,18 @@
 <summary id ="def"><h2><strong>1 - Definições</strong></h2></summary>
 
 ---
-   
-O problema é levantado no trabalho conhecido como TSPLib [^1] e possui diversos *rotas*, cada um com diversas *subrotas*, em variadas dimensões (simples, médias e as mais complexas). Alguns dos problemas propõem formas de distância entre as *cidades* baseados na distância Euclidiana. Outros seguem distâncias ponderadas e outros utilizam baseam-se na distância gemétrica.
+O problema TSP é um problema cássico de inteligência computacional, do tipo N p-difícil. \
+A implementação da heurística **deve** ser adaptada, de modo a se tratar de um problema combinatório sem repetições.  
 
-Para os exemplos deste repositório foram trabalhadas apenas as distâncias Euclidianas, e a distância ponderada (problemas ATSP).
+O problema é levantado no trabalho conhecido como TSPLib [^1] e possui diversos *rotas*, cada um com diversas *subrotas*, em variadas dimensões (simples, médias e as mais complexas). \
+Lá, propõem formas de distância entre as *cidades* baseados na distância Euclidiana. Outros seguem distâncias ponderadas e outros utilizam baseam-se na distância geométrica. \
+Para os exemplos deste repositório foram trabalhadas apenas as distâncias Euclidianas, e a distância ponderada (problemas ATSP). \
 O problema TSP com distância Euclidiana utiliza a seguinte definição de distância entre cidades:
 
 ```math
   d(\mathbf{p}, \mathbf{q}) = \sqrt{\sum_{i=1}^{n} (q_i - p_i)^2}
 ```
-Já o problema ATSP trabalha com a distância em formato matricial (diagonais *dont-care*), onde a distância entre a cidade n e a cidade m vale: 
+Já o problema ATSP trabalha com a distância em formato matricial (diagonais *dont-care*), onde a distância de uma n-ésima cidade vale: 
 
 ```math
 d_{nm}=
@@ -43,12 +45,12 @@ a_{n1} & a_{n2} & a_{n3} & \dots & 999999 \\
   - RunATSP.py para arquivos ATSP.
   
 - Uso da biblioteca *PYGad* para algoritmo genético [^2],
-- Implementações de operadores personalizados ao TSP,
-    - Problema **exige** não-repetição, os básicos operadores aqui implementados (cross-over e mutação) dão esta garantia.
+- Implementações dos operadores personalizados:
+    - Problema com não-repetição nos genes, operadores implementados (cross-over e mutação por inverão [^4]).
 - Execução individual com orçamento computacional (n de execuções):
   - **Se** D<50: 50000.
   - **Se-não**: 70000.
-- API com NetworkNx [^3] para visualização do *melhor* por geração.
+- **Fim**: Traçar a curva de aprendizado geração a geração.
 
 
 </details>
@@ -56,18 +58,22 @@ a_{n1} & a_{n2} & a_{n3} & \dots & 999999 \\
 <details>
  <summary id="result"> <h2> <strong>3- Resultados </h2> </strong> </summary>
 
-Os problemas de ordem menor apresentaram erro relativo baixo
+Os problemas de ordem menor apresentaram erro relativo baixo:
 
 | | B52  | Ch130 | Br17  | Ftv70 |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| **Obtido**  | 8805  | 9560  | 39  | 2439  |
+| **Obtido**  | 8303  | 9560  | 39  | 2439  |
 | **Ótimo** | 7542 | 6110 | 39  | 1950 |
-| **Erro rel. (%)**  | 17  | 56 | 0  | 25  |
+| **Erro rel. (%)**  | 9.2  | 56 | 0  | 25  |
 
+O tempo de uma execução foi de 2 minutos para o B52 enquanto Ch130 cerca de 10 minutos. \
+Os resultados que apresentaram um erro relativo elevado (principalmente o Ch130) será tratado neste repositório, futuramente, com meta-herísticas mais apropriadas. 
 
 </details>
 
 [^1]: Instâncias do problema, resultados ótimos e temas relacionados. [Site institucional Universitàt Heindelberg](http://comopt.ifi.uni-heidelberg.de/software/)  
 [^2]: Documentação da biblioteca [PYGAD](https://pygad.readthedocs.io/en/latest/README_pygad_ReadTheDocs.html).
 
-[^3]: Network NX
+[^3]: Network NX.
+
+[^4]: Operador de mutação 'Inverted Mutation':[International Journal of Combinatorial Optimization Problems and Informatics](https://www.redalyc.org/pdf/2652/265219635002.pdf)
