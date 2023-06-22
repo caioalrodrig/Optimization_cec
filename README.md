@@ -7,11 +7,11 @@
  <details>
 <summary id ="def"><h2><strong>1 - Definições</strong></h2></summary>
   
-As definições dos problemas estão todas [*AQUI*](https://github.com/P-N-Suganthan/CEC2017-BoundContrained/tree/master).(Funções 3 a 9) \
+As definições dos problemas estão todas [*aqui*](https://github.com/P-N-Suganthan/CEC2017-BoundContrained/tree/master) (Funções 3 a 9). \
 A ênfase será em traçar o comparativo de resultados em dimensões **D = 2** e **D = 10**. \
 O orçamento computacional seguirá a proporção: *ORCAMENTO* *=* *D* * *10000*. 
 
-Este [*REPOSITÓRIO*]() faz a implementação das funções multimodais e rotações, facilitando o trabalho. \
+Este [*Repo*](https://github.com/tilleyd/cec2017-py) faz a implementação das funções multimodais e rotações, facilitando o trabalho. \
 O foco do repositório será em comparar os desempenhos via:
 - Algoritmo Genético (*GA*).
 - Particle Swarm Optimization (*PSO*).
